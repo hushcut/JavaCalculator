@@ -1,17 +1,25 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class calculator extends JFrame {
     public calculator() {
         this.setTitle("계산기");
-        this.setSize(520, 250);
+        this.setSize(400, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout(10, 10)); //여백 추가
+        this.getContentPane().setBackground(new Color(40, 44, 52)); //배경색
 
         // 텍스트 필드 설정
         JTextField textField = new JTextField();
         textField.setEditable(false);
+        textField.setHorizontalAlignment(JTextField.RIGHT);
+        textField.setFont(new Font("Arial", Font.BOLD, 30)); //폰트
+        textField.setBackground(Color.gray); // 배경색
+        textField.setForeground(Color.white); // 글자 색
+        textField.setBorder(new EmptyBorder(15, 15, 15, 15));
         this.add(textField, BorderLayout.NORTH);
+
 
         // 버튼 배열 생성
         String[] buttonLabels = {
