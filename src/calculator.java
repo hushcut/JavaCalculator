@@ -35,12 +35,16 @@ public class calculator extends JFrame {
         buttonPanel.setLayout(new GridLayout(5, 5, 5, 5));
 
         // 반복문을 사용하여 버튼 추가
-        for (int i = 0; i < buttonLabels.length; i++) {
-            JButton button = new JButton(buttonLabels[i]);
-            button.setBackground(Color.YELLOW);
-            button.setForeground(buttonTextColors[i]);
-            buttonPanel.add(button);
-        }
+        for (int i = 0; i < buttonLabels.length; i++)
+            if (!buttonLabels[i].isEmpty()) {
+                JButton button = new JButton(buttonLabels[i]);
+                button.setBackground(Color.YELLOW);
+                button.setForeground(buttonTextColors[i]);
+                buttonPanel.add(button);
+            } else {
+                //빈 버튼 생성x
+                buttonPanel.add(new JLabel());
+            }
 
         // 버튼 패널을 프레임에 추가
         this.add(buttonPanel, BorderLayout.CENTER);
@@ -53,4 +57,5 @@ public class calculator extends JFrame {
         new calculator();
     }
 }
+
 
