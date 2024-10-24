@@ -8,7 +8,7 @@ public class calculator extends JFrame {
         this.setSize(400, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10, 10)); //여백 추가
-        this.getContentPane().setBackground(new Color(40, 44, 52)); //배경색
+        this.getContentPane().setBackground(Color.DARK_GRAY); //배경색
 
         // 텍스트 필드 설정
         JTextField textField = new JTextField();
@@ -21,7 +21,7 @@ public class calculator extends JFrame {
         this.add(textField, BorderLayout.NORTH);
 
 
-        // 버튼 배열 생성
+        // 버튼 레이블 생성
         String[] buttonLabels = {
                 "Backspace", "", "", "CE", "C",
                 "7", "8", "9", "/", "sqrt",
@@ -30,29 +30,29 @@ public class calculator extends JFrame {
                 "0", "+/-", ".", "+", "="
         };
 
-        // 버튼 색상 배열 생성
-        Color[] buttonTextColors = {
-                Color.BLUE, Color.BLACK, Color.BLACK, Color.RED, Color.RED,
-                Color.BLUE, Color.BLUE, Color.BLUE, Color.RED, Color.RED,
-                Color.BLUE, Color.BLUE, Color.BLUE, Color.RED, Color.RED,
-                Color.BLUE, Color.BLUE, Color.BLUE, Color.RED, Color.RED,
-                Color.BLUE, Color.BLUE, Color.BLUE, Color.RED, Color.RED
-        };
 
+        // 버튼 패널
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(5, 5, 5, 5));
+        buttonPanel.setLayout(new GridLayout(5, 5, 5, 5)); //간격
+        buttonPanel.setBackground(Color.DARK_GRAY); //배경색
 
         // 반복문을 사용하여 버튼 추가
-        for (int i = 0; i < buttonLabels.length; i++)
-            if (!buttonLabels[i].isEmpty()) {
-                JButton button = new JButton(buttonLabels[i]);
-                button.setBackground(Color.YELLOW);
-                button.setForeground(buttonTextColors[i]);
+        // 버튼 스타일 설정
+        for (String label : buttonLabels) {
+            if(!label.isEmpty()){
+                JButton button = new JButton(label);
+                button.setFont(new Font("Arial", Font.BOLD, 20)); //폰트 및 크기
+                button.setBackground(Color.LIGHT_GRAY); // 배경색
+                button.setForeground(Color.WHITE); // 텍스트 색
+                button.setFocusPainted(false); // 테두리 제거
+                button.setBorder(BorderFactory.createLineBorder(new Color(60, 63, 65)));
+                button.setPreferredSize(new Dimension(80, 60)); // 버튼 크기
                 buttonPanel.add(button);
-            } else {
-                //빈 버튼 생성x
-                buttonPanel.add(new JLabel());
+
+            }else {
+                buttonPanel.add(new JLabel("")); //빈 레이블로 빈칸 대체
             }
+        }
 
         // 버튼 패널을 프레임에 추가
         this.add(buttonPanel, BorderLayout.CENTER);
