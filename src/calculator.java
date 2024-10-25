@@ -14,7 +14,7 @@ public class calculator extends JFrame {
         JTextField textField = new JTextField();
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.RIGHT);
-        textField.setFont(new Font("Arial", Font.PLAIN, 36)); //폰트
+        textField.setFont(new Font("PLAINTEXT", Font.PLAIN, 30)); //폰트
         textField.setBackground(Color.gray); // 배경색
         textField.setForeground(Color.white); // 글자 색
         textField.setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -43,7 +43,7 @@ public class calculator extends JFrame {
                 JButton button = new JButton(label);
                 button.setFont(new Font("PLAINFONT", Font.PLAIN, 20)); //폰트 및 크기
                 button.setBackground(Color.LIGHT_GRAY); // 배경색
-                button.setForeground(Color.WHITE); // 텍스트 색
+                button.setForeground(Color.darkGray); // 텍스트 색
                 button.setFocusPainted(false); // 선택할때 테두리 제거
                 button.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80))); // 테두리
                 button.setPreferredSize(new Dimension(70, 50)); // 버튼 크기
@@ -62,6 +62,12 @@ public class calculator extends JFrame {
         }
 
         public static void main (String[]args){
+
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
             new calculator();
