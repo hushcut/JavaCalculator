@@ -1,8 +1,16 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class calculator extends JFrame {
+public class calculator extends JFrame implements ActionListener {
+    private  JTextField textField;
+    private  double num1 = 0, num2 = 0;
+    private  String operator = "";
+    private boolean startNewNumber = true;
+
+
     public calculator() {
         this.setTitle("계산기");
         this.setSize(300, 450);
@@ -14,7 +22,7 @@ public class calculator extends JFrame {
         JTextField textField = new JTextField();
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.RIGHT);
-        textField.setFont(new Font("PLAINTEXT", Font.PLAIN, 30)); //폰트
+        textField.setFont(new Font("PLAINFONT", Font.PLAIN, 30)); //폰트
         textField.setBackground(Color.gray); // 배경색
         textField.setForeground(Color.white); // 글자 색
         textField.setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -23,7 +31,7 @@ public class calculator extends JFrame {
 
         // 버튼 레이블 생성
         String[] buttonLabels = {
-                "C", " ", " ", "x",
+                "C", " ", "%", "x",
                 "7", "8", "9", "÷",
                 "4", "5", "6", "-",
                 "1", "2", "3", "+",
@@ -59,6 +67,13 @@ public class calculator extends JFrame {
 
             // 프레임을 보이게 설정
             this.setVisible(true);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e){
+            String command = e.getActionCommand();
+
+
         }
 
         public static void main (String[]args){
