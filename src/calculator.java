@@ -89,7 +89,7 @@ public class calculator extends JFrame implements ActionListener {
                 startNewNumber = true;
                 
             }
-            // "= 연산자 수행"
+            // "= 연산자 수행 "
             else if (command.equals("=")) {
                 num2 = Double.parseDouble(textField.getText());
                 double result = 0;
