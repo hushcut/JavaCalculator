@@ -55,6 +55,7 @@ public class calculator extends JFrame implements ActionListener {
                 button.setFocusPainted(false); // 선택할때 테두리 제거
                 button.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80))); // 테두리
                 button.setPreferredSize(new Dimension(70, 50)); // 버튼 크기
+                button.addActionListener(this);
                 buttonPanel.add(button);
             } else {
                 buttonPanel.add(new JLabel());
@@ -73,7 +74,68 @@ public class calculator extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             String command = e.getActionCommand();
 
+            //숫자 입력
+            if (command.matches("\\d")|| command.equals(".")){
+                if (startNewNumber){
+                    textField.setText("");
+                    startNewNumber = false;
+                }
+                textField.setText(textField.getText()+command);
+            }
+            // 연산자
+            else if (command.matches("[\\+\\-x/%]")) {
+                num1 = Double.parseDouble(textField.getText());
+                operator = command;
+                startNewNumber = true;
+                
+            }
+            // "= 연산자 수행"
+            else if (command.equals("=")) {
+                num2 = Double.parseDouble(textField.getText());
+                double result = 0;
 
+                switch (operator){
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "x":
+                        result = num1 * num2;
+                        break;
+                    case "÷":
+                        if (num2 !=0) {
+                            result = num1 / num2;
+                        }else {
+                            textField.setText("Error");
+                            return;
+                        }
+                        break;
+                    case "%":
+                        result = num1 * (num2/100); //백분율 계산
+                        break;
+                }
+
+                textField.setText(String.valueOf(result));
+                startNewNumber = true;
+                
+            }
+            // c 버튼 처리(초기화)
+            else if (command.equals("c")) {
+                textField.setText("");
+                num1 = num2 = 0;
+                operator = "";
+                startNewNumber = true;
+                
+            }
+        // +/- 버튼 처리
+            else if (command.equals("+/-")) {
+                if (!textField.getText().isEmpty()){
+                    double currentvalue = Double.parseDouble(textField.getText());
+                }
+                
+            }
         }
 
         public static void main (String[]args){
