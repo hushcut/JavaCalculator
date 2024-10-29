@@ -19,7 +19,7 @@ public class calculator extends JFrame implements ActionListener {
         this.getContentPane().setBackground(Color.DARK_GRAY); //배경색
 
         // 텍스트 필드 설정
-        JTextField textField = new JTextField();
+        textField = new JTextField();
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.RIGHT);
         textField.setFont(new Font("PLAINFONT", Font.PLAIN, 30)); //폰트
@@ -121,8 +121,8 @@ public class calculator extends JFrame implements ActionListener {
                 startNewNumber = true;
                 
             }
-            // c 버튼 처리(초기화)
-            else if (command.equals("c")) {
+            // C 버튼 처리(초기화)
+            else if (command.equals("C")) {
                 textField.setText("");
                 num1 = num2 = 0;
                 operator = "";
@@ -133,6 +133,8 @@ public class calculator extends JFrame implements ActionListener {
             else if (command.equals("+/-")) {
                 if (!textField.getText().isEmpty()){
                     double currentvalue = Double.parseDouble(textField.getText());
+                    currentvalue = -currentvalue;
+                    textField.setText(String.valueOf(currentvalue));
                 }
                 
             }
