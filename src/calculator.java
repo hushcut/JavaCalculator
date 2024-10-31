@@ -4,13 +4,28 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+/**
+ *Calculator는 JAVA를 사용하여 간단한 사칙연산 및 백분율 계산을 하는 계산기 애플리케이션 입니다.
+ *
+ * @author 2021011957 김민성
+ * @version 1.0
+ * @since 2024-10-31
+ */
+
 public class calculator extends JFrame implements ActionListener {
+    /** 결과 및 입력을 표시하는 JTextField */
     private  JTextField textField;
+    /** 첫번째 숫자 지정 */
     private  double num1 = 0, num2 = 0;
+    /** 두번째 숫자 지정 */
     private  String operator = "";
+    /** 새 숫자 입력 시작 여부 */
     private boolean startNewNumber = true;
 
 
+    /**
+     * 기본 생성자, 계산기의 GUI 컴포넌트를 초기화 및 설정
+     */
     public calculator() {
         this.setTitle("계산기");
         this.setSize(300, 450);
@@ -70,7 +85,11 @@ public class calculator extends JFrame implements ActionListener {
             this.setVisible(true);
         }
 
-        @Override
+    /**
+     * 버튼 클릭 이벤트를 처리하여 연산 및 결과 계산
+     * @param e Actionevent 객체로, 버튼 클릭 이벤트 정보 포함
+     */
+    @Override
         public void actionPerformed(ActionEvent e){
             String command = e.getActionCommand();
 
@@ -122,6 +141,9 @@ public class calculator extends JFrame implements ActionListener {
                 
             }
             // C 버튼 처리(초기화)
+            /**
+             * @see 챗GPT의 도움을 받음
+             */
             else if (command.equals("C")) {
                 textField.setText("");
                 num1 = num2 = 0;
@@ -130,6 +152,9 @@ public class calculator extends JFrame implements ActionListener {
                 
             }
         // +/- 버튼 처리
+            /**
+             * @see 챗GPT의 도움을 받음
+             */
             else if (command.equals("+/-")) {
                 if (!textField.getText().isEmpty()){
                     double currentvalue = Double.parseDouble(textField.getText());
@@ -140,7 +165,13 @@ public class calculator extends JFrame implements ActionListener {
             }
         }
 
-        public static void main (String[]args){
+    /**
+     * 애플리케이션 실행 메인 메서드
+     * Nimbus Look and Feel을 설정하고 Calculator 인스턴스 생성
+     * @see "Nimbus Look and Feel"을 챗gpt가 사용을 권장
+     * @param args
+     */
+    public static void main (String[]args){
 
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
